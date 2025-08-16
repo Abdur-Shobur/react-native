@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import {
 	Button,
-	FlatList,
 	ScrollView,
 	StyleSheet,
 	Text,
@@ -41,8 +40,11 @@ export default function Index() {
 					onChangeText={setTask}
 				/>
 				<Button title="Add Task" onPress={addTask} />
-
-				<FlatList data={todos} renderItem={({ item }) => <Text>{item}</Text>} />
+				{todos.map((item, index) => (
+					<Text key={index} style={styles.todoItem}>
+						{item}
+					</Text>
+				))}
 			</View>
 		</ScrollView>
 	);
